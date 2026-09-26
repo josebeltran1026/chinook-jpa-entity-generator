@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -29,5 +32,9 @@ public class Album {
     @NotNull
     @Column(name = "artist_id")
     private Integer artistId;
+
+    @ManyToOne
+    @JoinColumn(name = "artist_id", referencedColumnName = "artist_id", insertable = false, updatable = false)
+    private Artist artist;
 
 }
